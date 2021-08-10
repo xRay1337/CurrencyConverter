@@ -83,7 +83,7 @@ namespace ProductivityInside
 
         private void rightButton_Click(object sender, RoutedEventArgs e)
         {
-            object[] param = new object[3] { nameof(rightButon), rightButon.Content, valutes };
+            object[] param = new object[3] { nameof(rightButton), rightButton.Content, valutes };
 
             Frame.Navigate(typeof(ValutesPage), param);
         }

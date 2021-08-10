@@ -45,8 +45,8 @@
             <RowDefinition/>
    
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource btnChanged}" x:Name="leftButon" Grid.Row="0" Grid.Column="0" Content="RUB"/>
-        <Button Style="{StaticResource btnChanged}" x:Name="rightButon" Grid.Row="0" Grid.Column="2" Content="USD" Click="rightButton_Click"/>
+        <Button Style="{StaticResource btnChanged}" x:Name="leftButton" Grid.Row="0" Grid.Column="0" Content="RUB"/>
+        <Button Style="{StaticResource btnChanged}" x:Name="rightButton" Grid.Row="0" Grid.Column="2" Content="USD" Click="rightButton_Click"/>
         
         <TextBox x:Name="leftTBox" Style="{StaticResource tBoxValute}" Grid.Row="1" Grid.Column="0"  Text="1" BeforeTextChanging="leftTBox_BeforeTextChanging" TextChanged="leftTBox_TextChanged" />
         <TextBox x:Name="rightTBox" Style="{StaticResource tBoxValute}" Grid.Row="1" Grid.Column="2"  Text="0.0" />
