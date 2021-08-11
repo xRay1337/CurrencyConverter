@@ -6,13 +6,15 @@
 
         //public string NumCode { get; set; }
 
-        public string CharCode { get; set; }
+        public string CharCode { get; }
 
-        public int Nominal { get; set; }
+        public int Nominal { get; }
 
-        public string Name { get; set; }
+        public string Name { get; }
 
-        public double Value { get; set; }
+        public double Value { get; }
+
+        //public bool IsSelected { get; set; }
 
         //public double Previous { get; set; }
 
@@ -24,9 +26,8 @@
             Value = value;
         }
 
-        public override string ToString()
-        {
-            return Name;
-        }
+        public double GetCost() => Value / Nominal;
+
+        public override string ToString() => CharCode;
     }
 }

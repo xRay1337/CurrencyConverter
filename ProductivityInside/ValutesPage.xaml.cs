@@ -15,37 +15,32 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProductivityInside
 {
     public sealed partial class ValutesPage : Page
     {
-        string currentValute;
-        string buttonName;
-        List<Valute> valutes;
-
         public ValutesPage()
         {
             this.InitializeComponent();
+            lbValutes.ItemsSource = MainPage.valutes;
         }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
+        private void lbValutes_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            object[] param = (object[])(e.Parameter);
+            var selectedCode = lbValutes.SelectedItem.ToString();
+            var selectedValute = MainPage.valutes.First(v => v.CharCode == selectedCode);
 
-            buttonName = (string)(param[0]);
-            currentValute = (string)(param[1]);
-            valutes = (List<Valute>)(param[2]);
+            if (MainPage.isLeftButtonPressed)
+            {
+                MainPage.leftValute = selectedValute;
+            }
+            else
+            {
+                MainPage.rightValute = selectedValute;
+            }
 
-            new MessageDialog(buttonName).ShowAsync();
-
-            valutes.Sort(delegate(Valute v1, Valute v2)
-             {
-                 return v1.Name.CompareTo(v2.Name);
-             });
-
-            lbValutes.ItemsSource = valutes;
+            Frame.Navigate(typeof(ConverterPage));
         }
     }
 }

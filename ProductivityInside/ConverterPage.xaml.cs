@@ -16,76 +16,80 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// Документацию по шаблону элемента "Пустая страница" см. по адресу https://go.microsoft.com/fwlink/?LinkId=234238
 
 namespace ProductivityInside
 {
-    /// <summary>
-    /// Пустая страница, которую можно использовать саму по себе или для перехода внутри фрейма.
-    /// </summary>
     public sealed partial class ConverterPage : Page
     {
-        CbrResponse cbrResponse;
-
-        DateTime currentDate;
-
-        List<Valute> valutes;
-
-        string leftValute = "RUB";
-        double leftValue = 1;
-
-        string rightValute = "USD";
-        double rightValue;
-
         public ConverterPage()
         {
             this.InitializeComponent();
-        }
 
-        protected override void OnNavigatedTo(NavigationEventArgs e)
-        {
-            if (e.Parameter is CbrResponse)
-            {
-                cbrResponse = (CbrResponse)e.Parameter;
+            leftButton.Content = MainPage.leftValute.CharCode;
+            leftTBox.Text = "1";
+            leftTBox.SelectionStart = leftTBox.Text.Length;
 
-                currentDate = cbrResponse.Date;
+            rightButton.Content = MainPage.rightValute.CharCode;
 
-                valutes = cbrResponse.Valute.Values.ToList();
-                valutes.Add(new Valute("RUR", 1, "Российский рубль", 1));
+            rightTBox.Text = Math.Round(MainPage.leftValute.GetCost() / MainPage.rightValute.GetCost(), 2).ToString();
 
-                rightValue = Math.Round(valutes.FirstOrDefault(v => v.CharCode == "USD").Value, 2);
-                rightTBox.Text = rightValue.ToString();
+            rightTBox.SelectionStart = rightTBox.Text.Length;
 
-                leftTBox.SelectionStart = leftTBox.Text.Length;
-            }
-        }
-
-        private void leftTBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            if (leftTBox.Text != "")
-            {
-                double leftValue = Convert.ToDouble(leftTBox.Text);
-                double rightValue = valutes.FirstOrDefault(v => v.CharCode == rightValute).Value;
-                double result = leftValue * rightValue;
-
-                rightTBox.Text = result.ToString();
-            }
-            else
-            {
-                rightTBox.Text = "0.00";
-            }
-        }
-
-        private void leftTBox_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
-        {
-            args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
+            updateButton.Content = $"Дата обновления {MainPage.currentDate}";
+            //new MessageDialog(MainPage.rightAmount.ToString()).ShowAsync();
+            //new MessageDialog("Constructor").ShowAsync();
         }
 
         private void rightButton_Click(object sender, RoutedEventArgs e)
         {
-            object[] param = new object[3] { nameof(rightButton), rightButton.Content, valutes };
+            MainPage.isLeftButtonPressed = false;
+            Frame.Navigate(typeof(ValutesPage));
+        }
 
-            Frame.Navigate(typeof(ValutesPage), param);
+        private void rightTBox_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
+        {
+            //args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
+        }
+
+        private void rightTBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //if (rightTBox.Text != "")
+            //{
+            //    MainPage.rightAmount = Convert.ToDouble(rightTBox.Text);
+            //    double result = Math.Round(MainPage.rightAmount * MainPage.rightValute.GetCost(), 2);
+
+            //    leftTBox.Text = result.ToString();
+            //}
+            //else
+            //{
+            //    leftTBox.Text = "0,00";
+            //}
+        }
+
+        private void leftButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainPage.isLeftButtonPressed = true;
+            Frame.Navigate(typeof(ValutesPage));
+        }
+
+        private void leftTBox_BeforeTextChanging(TextBox sender, TextBoxBeforeTextChangingEventArgs args)
+        {
+            //args.Cancel = args.NewText.Any(c => !char.IsDigit(c));
+        }
+
+        private void leftTBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            //if (leftTBox.Text != "")
+            //{
+            //    MainPage.leftAmount = Convert.ToDouble(leftTBox.Text);
+            //    double result = Math.Round(MainPage.leftAmount * MainPage.rightValute.GetCost(), 2);
+
+            //    rightTBox.Text = result.ToString();
+            //}
+            //else
+            //{
+            //    rightTBox.Text = "0,00";
+            //}
         }
     }
 }

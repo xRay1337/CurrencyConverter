@@ -31,6 +31,16 @@
             <Setter Property="Background" Value="{x:Null}"/>
             <Setter Property="Foreground" Value="Blue"/>
         </Style>
+
+        <Style TargetType="Button" x:Key="btnUpdate">
+            <Setter Property="VerticalAlignment" Value="Center"/>
+            <Setter Property="HorizontalAlignment" Value="Center"/>
+            <Setter Property="FontSize" Value="15"/>
+            <Setter Property="Height" Value="50"/>
+            <Setter Property="Width" Value="250"/>
+            <Setter Property="Background" Value="{x:Null}"/>
+            <Setter Property="Foreground" Value="Blue"/>
+        </Style>
     </Page.Resources>
     
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
@@ -45,12 +55,14 @@
             <RowDefinition/>
    
         </Grid.RowDefinitions>
-        <Button Style="{StaticResource btnChanged}" x:Name="leftButton" Grid.Row="0" Grid.Column="0" Content="RUB"/>
-        <Button Style="{StaticResource btnChanged}" x:Name="rightButton" Grid.Row="0" Grid.Column="2" Content="USD" Click="rightButton_Click"/>
+        <Button x:Name="leftButton" Style="{StaticResource btnChanged}" Grid.Row="0" Grid.Column="0" Content="RUR" Click="leftButton_Click"/>
+        <Button x:Name="rightButton" Style="{StaticResource btnChanged}" Grid.Row="0" Grid.Column="2" Content="USD" Click="rightButton_Click"/>
         
-        <TextBox x:Name="leftTBox" Style="{StaticResource tBoxValute}" Grid.Row="1" Grid.Column="0"  Text="1" BeforeTextChanging="leftTBox_BeforeTextChanging" TextChanged="leftTBox_TextChanged" />
-        <TextBox x:Name="rightTBox" Style="{StaticResource tBoxValute}" Grid.Row="1" Grid.Column="2"  Text="0.0" />
+        <TextBox x:Name="leftTBox" Style="{StaticResource tBoxValute}" Grid.Row="1" Grid.Column="0" Text="1" BeforeTextChanging="leftTBox_BeforeTextChanging" TextChanged="leftTBox_TextChanged"/>
+        <TextBox x:Name="rightTBox" Style="{StaticResource tBoxValute}" Grid.Row="1" Grid.Column="2" Text="0" BeforeTextChanging="rightTBox_BeforeTextChanging" TextChanged="rightTBox_TextChanged" IsReadOnly="True"/>
 
         <TextBlock Style="{StaticResource tBlockValute}" Grid.Row="1" Grid.Column="1" Text="="/>
+
+        <Button x:Name="updateButton" Style="{StaticResource btnUpdate}" Grid.Row="2" Grid.ColumnSpan="3">Дата обновления</Button>
     </Grid>
 </Page>

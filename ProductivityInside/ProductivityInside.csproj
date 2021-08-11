@@ -126,7 +126,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\Valute.cs" />
-    <Compile Include="Models\Response.cs" />
+    <Compile Include="Models\CbrResponse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ValutesPage.xaml.cs">
       <DependentUpon>ValutesPage.xaml</DependentUpon>

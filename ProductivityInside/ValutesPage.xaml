@@ -19,10 +19,12 @@
             <Setter Property="FontFamily" Value="Impact"/>
             <Setter Property="FontSize" Value="16"/>
         </Style>
+
+        
     </Page.Resources>
     
     <Grid>
-        <ListBox x:Name="lbValutes">
+        <ListBox x:Name="lbValutes" DoubleTapped="lbValutes_DoubleTapped">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <!--<Border BorderThickness="1" BorderBrush="#f68741" Width="450" Height="30" Margin="5">-->
@@ -38,10 +40,10 @@
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Style="{StaticResource tBlockValute}" Text="{Binding Path = CharCode}" Foreground="{StaticResource TextColor}"/>
-                            <TextBlock Grid.Column="1" Style="{StaticResource tBlockValute}" Text="&#x2713;" Foreground="{StaticResource TextColor}"/>
+                            <TextBlock Grid.Column="1" Style="{StaticResource tBlockValute}" Text="{Binding Path = IsSelected}" Foreground="{StaticResource TextColor}"/>
                         </Grid>
                         </Grid>
-                    <!--</Border>-->
+                    <!--</Border>&#x2713;-->
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

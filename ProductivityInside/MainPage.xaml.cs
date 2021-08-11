@@ -24,12 +24,19 @@ namespace ProductivityInside
 {
     public sealed partial class MainPage : Page
     {
-        CbrResponse cbrResponse;
+        public static CbrResponse cbrResponse;
+        public static DateTime currentDate;
+        public static List<Valute> valutes;
 
-        DateTime currentDate;
+        public static Valute leftValute;
+        public static double leftAmount;
 
-        List<Valute> valutes;
-        
+        public static Valute rightValute;
+        public static double rightAmount;
+
+        public static bool isLeftButtonPressed;
+
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -38,11 +45,21 @@ namespace ProductivityInside
             currentDate = cbrResponse.Date;
             valutes = cbrResponse.Valute.Values.ToList();
 
+            valutes.Sort(delegate(Valute v1, Valute v2)
+            {
+                return v1.Name.CompareTo(v2.Name);
+            });
 
-            //new MessageDialog(valutes.Count.ToString()).ShowAsync();
+            leftValute = valutes.First(v => v.CharCode == "USD");
+            leftAmount = 1;
+
+            rightValute = valutes.First(v => v.CharCode == "RUR");
+            rightAmount = rightValute.GetCost();
+
+            //new MessageDialog(MainPage.rightAmount.ToString()).ShowAsync();
         }
 
-        public CbrResponse LoadData()
+        public static CbrResponse LoadData()
         {
             try
             {
@@ -60,6 +77,8 @@ namespace ProductivityInside
                 }
 
                 var cbrResponse = JsonConvert.DeserializeObject<CbrResponse>(jsonText);
+
+                cbrResponse.Valute.Add("RUR", new Valute("RUR", 1, "Российский рубль", 1));
 
                 return cbrResponse;
             }
@@ -79,7 +98,7 @@ namespace ProductivityInside
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            Frame.Navigate(typeof(ConverterPage), cbrResponse);
+            Frame.Navigate(typeof(ConverterPage));
         }
     }
 }
