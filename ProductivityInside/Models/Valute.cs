@@ -2,27 +2,22 @@
 {
     public class Valute
     {
-        //public string Id { get; set; }
-
-        //public string NumCode { get; set; }
-
         public string CharCode { get; }
-
-        public int Nominal { get; }
 
         public string Name { get; }
 
+        public int Nominal { get; }
+
         public double Value { get; }
 
-        //public bool IsSelected { get; set; }
+        public char IsSelected { get; set; } = ' ';
 
-        //public double Previous { get; set; }
 
-        public Valute(string charCode, int nominal, string name, double value)
+        public Valute(string charCode, string name, int nominal, double value)
         {
             CharCode = charCode;
-            Nominal = nominal;
             Name = name;
+            Nominal = nominal;
             Value = value;
         }
 

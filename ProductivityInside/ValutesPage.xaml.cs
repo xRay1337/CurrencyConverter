@@ -23,6 +23,14 @@ namespace ProductivityInside
         public ValutesPage()
         {
             this.InitializeComponent();
+
+            for (int i = 0; i < MainPage.valutes.Count; i++)
+            {
+                MainPage.valutes[i].IsSelected = ' ';
+            }
+
+            MainPage.valutes.First(v => v.CharCode == MainPage.chengedValuteCode).IsSelected = '\u2713';
+
             lbValutes.ItemsSource = MainPage.valutes;
         }
 

@@ -9,9 +9,6 @@
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
     <Page.Resources>
         <SolidColorBrush x:Key="TextColor" Color="#000000" />
-        <!--<SolidColorBrush x:Key="BackgroundColor" Color="#10133a" />
-        <SolidColorBrush x:Key="BorderButtonColor" Color="#f68741" />
-        <SolidColorBrush x:Key="HoverColor" Color="#fcdf87" />-->
 
         <Style TargetType="TextBlock" x:Key="tBlockValute">
             <Setter Property="VerticalAlignment" Value="Center"/>
@@ -27,23 +24,21 @@
         <ListBox x:Name="lbValutes" DoubleTapped="lbValutes_DoubleTapped">
             <ListBox.ItemTemplate>
                 <DataTemplate>
-                    <!--<Border BorderThickness="1" BorderBrush="#f68741" Width="450" Height="30" Margin="5">-->
-                        <Grid Margin="5 0" VerticalAlignment="Center" HorizontalAlignment="Right">
-                            <Grid.ColumnDefinitions>
-                                <ColumnDefinition Width="370"/>
-                                <ColumnDefinition Width="80"/>
+                    <Grid Margin="5 0" VerticalAlignment="Center" HorizontalAlignment="Right">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="370"/>
+                            <ColumnDefinition Width="80"/>
                         </Grid.ColumnDefinitions>
-                            <TextBlock Grid.Column="0" Style="{StaticResource tBlockValute}" Text="{Binding Path = Name}" Foreground="{StaticResource TextColor}"/>
+                        <TextBlock Grid.Column="0" Style="{StaticResource tBlockValute}" Text="{Binding Path = Name}" Foreground="{StaticResource TextColor}"/>
                         <Grid Grid.Column="1">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
                                 <ColumnDefinition/>
                             </Grid.ColumnDefinitions>
                             <TextBlock Grid.Column="0" Style="{StaticResource tBlockValute}" Text="{Binding Path = CharCode}" Foreground="{StaticResource TextColor}"/>
-                            <TextBlock Grid.Column="1" Style="{StaticResource tBlockValute}" Text="{Binding Path = IsSelected}" Foreground="{StaticResource TextColor}"/>
+                            <TextBlock x:Name="isSelectedTextBlock" Grid.Column="1" Style="{StaticResource tBlockValute}" Text="{Binding Path = IsSelected}" Foreground="{StaticResource TextColor}"/>
                         </Grid>
-                        </Grid>
-                    <!--</Border>&#x2713;-->
+                    </Grid>
                 </DataTemplate>
             </ListBox.ItemTemplate>
         </ListBox>

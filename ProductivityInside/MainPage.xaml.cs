@@ -36,6 +36,7 @@ namespace ProductivityInside
 
         public static bool isLeftButtonPressed;
 
+        public static string chengedValuteCode;
 
         public MainPage()
         {
@@ -78,17 +79,9 @@ namespace ProductivityInside
 
                 var cbrResponse = JsonConvert.DeserializeObject<CbrResponse>(jsonText);
 
-                cbrResponse.Valute.Add("RUR", new Valute("RUR", 1, "Российский рубль", 1));
+                cbrResponse.Valute.Add("RUR", new Valute("RUR", "Российский рубль", 1, 1));
 
                 return cbrResponse;
-            }
-            catch (WebException ex)
-            {
-                throw;
-            }
-            catch (IOException ex)
-            {
-                throw;
             }
             catch (Exception ex)
             {
