@@ -24,6 +24,9 @@ namespace ProductivityInside
         {
             this.InitializeComponent();
 
+            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+            appView.Title = "Список валют";
+
             for (int i = 0; i < MainPage.valutes.Count; i++)
             {
                 MainPage.valutes[i].IsSelected = ' ';

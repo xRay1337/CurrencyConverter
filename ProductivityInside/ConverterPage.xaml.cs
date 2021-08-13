@@ -25,6 +25,9 @@ namespace ProductivityInside
         {
             this.InitializeComponent();
 
+            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+            appView.Title = "";
+
             leftButton.Content = MainPage.leftValute.CharCode;
             leftTBox.Text = "1";
             leftTBox.SelectionStart = leftTBox.Text.Length;

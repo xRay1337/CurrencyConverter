@@ -173,6 +173,15 @@
       <Version>13.0.1</Version>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\Perfect DOS VGA 437.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\Perfect DOS VGA 437 Win.ttf" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Fonts\04B03REV.TTF" />
+  </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

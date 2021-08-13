@@ -4,4 +4,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:ProductivityInside">
 
+    <Application.Resources>
+        <SolidColorBrush x:Key="TextControlBackgroundFocused" Color="#0000AA"/>
+        <SolidColorBrush x:Key="TextControlForegroundFocused" Color="#55FFFF"/>
+        <SolidColorBrush x:Key="TextControlBorderBrushFocused" Color="#0000AA"/>
+        <SolidColorBrush x:Key="TextControlBackgroundPointerOver" Color="#55FFFF"/>
+        <SolidColorBrush x:Key="TextControlForegroundPointerOver" Color="#000000"/>
+        
+        <SolidColorBrush x:Key="ButtonControlBackgroundPointerOver" Color="#000000"/>
+    </Application.Resources>
 </Application>

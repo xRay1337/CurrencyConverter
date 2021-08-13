@@ -32,11 +32,10 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="ProductivityInside.App">
       <uap:VisualElements
-        DisplayName="ProductivityInside"
         Square150x150Logo="Assets\Square150x150Logo.png"
         Square44x44Logo="Assets\Square44x44Logo.png"
         Description="ProductivityInside"
-        BackgroundColor="transparent">
+        BackgroundColor="transparent" DisplayName="Конвертер валют">
         <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png"/>
         <uap:SplashScreen Image="Assets\SplashScreen.png" />
       </uap:VisualElements>

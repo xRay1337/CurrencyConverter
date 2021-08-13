@@ -38,9 +38,13 @@ namespace ProductivityInside
 
         public static string chengedValuteCode;
 
+
         public MainPage()
         {
             this.InitializeComponent();
+
+            var appView = Windows.UI.ViewManagement.ApplicationView.GetForCurrentView();
+            appView.Title = "Загрузка данных";
 
             cbrResponse = LoadData();
             currentDate = cbrResponse.Date;

@@ -6,22 +6,21 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" HorizontalAlignment="Center" VerticalAlignment="Center">
+    Background="#0000AA" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
 
     <Page.Resources>
         <ControlTemplate TargetType="Button" x:Key="btTemplate">
-            <Border CornerRadius="25" BorderBrush="CadetBlue" BorderThickness="2"
-                    Background="LightBlue" Height="40" Width="100" >
+            <Border CornerRadius="25" BorderBrush="#55FFFF" BorderThickness="10" Background="#0000AA" Height="40" Width="100">
                 <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center" Content="Hello" />
             </Border>
         </ControlTemplate>
     </Page.Resources>
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="500">
+    <Grid Background="#0000AA" VerticalAlignment="Center" HorizontalAlignment="Center">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="250"/>
         </Grid.RowDefinitions>
-        <ProgressRing Grid.Row ="0" x:Name="progressRing" IsActive="True" Width="60" Height="60" Foreground="Blue"/>
-        <Button Grid.Row ="1" Content="Конвертировать"  VerticalAlignment="Center" Height="113" Width="373" HorizontalAlignment="Center" Click="Button_Click"/>
+        <ProgressRing Grid.Row ="0" x:Name="progressRing" IsActive="True" Width="60" Height="60" Foreground="#55FFFF"/>
+        <Button Grid.Row ="1" Content="КОНВЕРТИРОВАТЬ" VerticalAlignment="Center" Height="100" Width="400" Foreground="#55FFFF" Background="#00AAAA" HorizontalAlignment="Center" Click="Button_Click"/>
     </Grid>
 </Page>
